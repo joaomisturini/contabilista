@@ -2,10 +2,13 @@ version: '3'
 
 services:
   app:
-    command: yarn start
-    image: golang:1.21
+    build:
+      context: .
+      dockerfile: ./devops/go/Dockerfile
+    command: go run ./http/server.go
     ports:
-      - 80:80
+      - 8080:8080
     volumes:
       - .:/go/src
+    user: go
     working_dir: /go/src

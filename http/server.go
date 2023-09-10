@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"net/http"
 
 	"github.com/joaomisturini/contabilista/src"
@@ -22,6 +23,7 @@ func main() {
 
 	http.HandleFunc("/", controller.GetRoot)
 
+	fmt.Println("Serving at :8080")
 	err = http.ListenAndServe(":8080", nil)
 	if err != nil {
 		panic(err)
